@@ -27,12 +27,16 @@ db = DataBase(
 )
 
 class DBMiddleware(BaseMiddleware):
-    async def __call__(
-        self, handler, event, data
+    async def pre_process(
+        self, obj, data, *args
     ):
-        print(handler, event, data)
+        print(obj, data, args)
         data['db'] = db
-        return await handler(event, data)
+    
+    async def post_process(
+        self, obj, data, *args
+    ):
+        print(obj, data, args)
 
 if __name__ == '__main__':
     bot = Bot(token=environ.get('TOKEN'), parse_mode="HTML")

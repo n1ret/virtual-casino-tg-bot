@@ -7,8 +7,8 @@ if [ -d ".venv" ]; then
 else
     python -m venv .venv
     if [ -d ".venv/bin" ]; then
-        .venv/bin/pip install -r req.txt
+        .venv/bin/pip install -r requirements.txt
     elif [ -d ".venv/Scripts" ]; then
-        .venv/Scripts/pip install -r req.txt
+        .venv/Scripts/pip install -r requirements.txt
     fi
 fi
